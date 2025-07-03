@@ -134,12 +134,13 @@
         }, index * 100);
       });
     }, 5000);
+    
     for (let i = 0; i < 25; i++) {
       const heart = document.createElement('div');
       heart.className = 'heart';
       heart.textContent = '💞';
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (8 + Math.random() * 5) + 's';
+      heart.style.animationDuration = (8 + Math.random() * 2) + 's';
       heart.style.fontSize = (1 + Math.random() * 2) + 'em';
       document.getElementById('welcomeScreen').appendChild(heart);
     }
@@ -201,7 +202,7 @@
       // Crear un pétalo cada 300ms
       setInterval(() => {
         createPetal();
-      }, 300);
+      }, 1500);
     }
 
 
