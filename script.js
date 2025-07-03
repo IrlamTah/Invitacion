@@ -83,7 +83,6 @@
       // Indicador visual de botón de música
       setTimeout(() => {
         if (!isPlaying) {
-        container.style.width = `${slide.offsetWidth}px`;
           musicControl.style.animation = 'pulse 2s infinite';
         }
       }, 3000);
