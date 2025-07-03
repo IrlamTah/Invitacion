@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Irlam & Paola - Una Celebración de Amor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="petal-container"></div>
+  <!-- Botón de música -->
+  <button class="music-control" id="musicControl" title="Reproducir/Pausar música">🎵</button>
+
+  <!-- Audio real -->
+  <audio id="backgroundMusic" muted loop>
+    <source src="Audio/audios2.mp3" type="audio/mp3">
+  </audio>
+  <div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-title">Irlam & Paola</div>
+    <div class="welcome-message">Estás cordialmente invitado a celebrar nuestro amor 💖</div>
+    <button class="enter-button" id="enterBtn">Entrar a la invitación</button>
+  </div>
+
+  <div class="container">
+        <div class="ornamental-border"></div>
+        
+        <div class="header">
+            <div class="couples-names">
+                Irlam<span class="ampersand">&</span>Paola
+            </div>
+            <div class="wedding-text">Celebremos Nuestro Amor</div>
+        </div>
+
+        <div class="content">
+            <!-- Contador Regresivo -->
+            <div class="section">
+                <div class="countdown-section">
+                    <div class="countdown-title">Faltan</div>
+                    <div class="countdown-container">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">--</span>
+                            <span class="countdown-label">Días</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">--</span>
+                            <span class="countdown-label">Horas</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="minutes">--</span>
+                            <span class="countdown-label">Minutos</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="seconds">--</span>
+                            <span class="countdown-label">Segundos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Fecha & Hora</div>
+                <div class="date-time">
+                    <div class="date">6 de Septiembre</div>
+                    <div class="time">6:30 PM - Ceremonia</div>
+                </div>
+            </div>
+
+            <div class="section" id="nuestra-historia">
+              <div class="section-title">Nuestra Historia</div>
+              <div class="carousel-container">
+                  <div class="carousel-track">
+                    <img src="Imagenes/1.jpg" alt="Historia 1" style="width: 700px; height: 500px;">
+                    <img src="Imagenes/2.jpg" alt="Historia 2" style="width: 700px; height: 500px;">
+                    <img src="Imagenes/3.jpg" alt="Historia 3" style="width: 700px; height: 500px;">
+                    <img src="Imagenes/4.jpg" alt="Historia 4" style="width: 700px; height: 500px;">
+                    <img src="Imagenes/5.jpg" alt="Historia 5" style="width: 700px; height: 500px;">
+                    <img src="Imagenes/7.jpg" alt="Historia 7" style="width: 700px; height: 500px;">
+                  </div>
+              </div>
+            </div>
+
+            <div class="section" id="regalos">
+              <div class="section-title">Regalos</div>
+              <div class="gift-intro">
+                <div class="house-animation">
+                  <!-- SVG de casa dividido en piezas -->
+                  <svg width="100" height="100" viewBox="0 0 100 100">
+                    <rect class="part wall" x="25" y="40" width="50" height="40" fill="#FDD7AA"/>
+                    <polygon class="part roof" points="20,40 50,15 80,40" fill="#C47F00"/>
+                    <rect class="part door" x="45" y="60" width="10" height="20" fill="#8B4513"/>
+                  </svg>
+                </div>
+                <p>
+                  Nos emociona pensar en comenzar nuestro hogar. Si deseas ayudarnos a construir este espacio lleno de amor, aquí están nuestros datos bancarios.
+                </p>
+              </div>
+              <ul class="gift-info">
+                <li><strong>Banco:</strong> BBVA</li>
+                <li><strong>CLABE:</strong> 012345678901234567</li>
+                <li><strong>A nombre de:</strong> Irlam & Paola</li>
+              </ul>
+            </div>
+
+
+
+
+            <div class="section">
+                <div class="section-title">Lugar de Celebración</div>
+                <div class="location">
+                    <div class="venue-name">Quinta Senderos</div>
+                    <div class="address">Tizimín, Yucatán</div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3738.5!2d-88.1533!3d21.1427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDA4JzMzLjciTiA4OMKwMDknMTEuOCJX!5e0!3m2!1ses!2smx!4v1625097600000!5m2!1ses!2smx"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Confirma tu Presencia</div>
+                <p style="margin-bottom: 30px; color: #7f8c8d; font-size: 1.2em; font-style: italic;">
+                    Tu compañía hará de este día algo aún más especial
+                </p>
+                
+                <div class="buttons">
+                    <a href="https://wa.me/529861119414?text=¡Hola! Con gran alegría confirmo mi asistencia a la boda de Irlam y Paola el 6 de septiembre. ¡No me lo perdería! 💒💕" 
+                       class="btn btn-whatsapp" target="_blank">
+                        💚 Confirmar Asistencia
+                    </a>
+                    <a href="https://www.google.com/maps/search/Quinta+Senderos+Tizimín+Yucatán" 
+                       class="btn btn-location" target="_blank">
+                        📍 Cómo Llegar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="hearts">💖 ✨ 💖</div>
+            <div class="footer-text">Con todo nuestro amor</div>
+            <p style="font-size: 1.3em; margin: 10px 0;">Irlam & Paola</p>
+            <div class="footer-details">
+                6 de Septiembre, 2025 • Quinta Senderos • Tizimín, Yucatán
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
