@@ -413,17 +413,6 @@
             height: 300px;
         }
 
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-            color: white;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-whatsapp:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
-        }
-
         .btn-location {
             background: linear-gradient(135deg, #b8860b 0%, #daa520 100%);
             color: white;
@@ -627,10 +616,6 @@
                 font-size: 1.8em;
             }
             
-            .section-title {
-                font-size: 1.4em;
-            }
-            
             .venue-name {
                 font-size: 1.4em;
             }
@@ -661,19 +646,7 @@
           0%, 100% { transform: scale(1); }
           50% { transform: scale(1.1); }
         }
-        .welcome-screen {
-          position: fixed;
-          inset: 0;
-          background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-          z-index: 9999;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          animation: fadeIn 1.5s ease-out;
-        }
-
+        
         .welcome-title {
           font-family: 'Playfair Display', serif;
           font-size: 4em;
@@ -783,49 +756,4 @@
             transform: translateY(110vh) rotate(360deg);
             opacity: 0;
           }
-        }
-
-        .carousel-wrapper {
-            display: flex;
-            justify-content: center;
-            overflow-x: hidden;
-        }
-
-        .carousel-container {
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin: 0 auto;
-            position: relative;
-            transition: width 0.8s ease, height 0.8s ease;
-            display: inline-block;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.8s ease-in-out;
-            width: auto;
-            height: auto;
-        }
-        .carousel-image {
-            display: block;
-            max-width: 100vw; /* nunca más ancha que el viewport */
-            max-height: 70vh; /* opcional: para limitar en altura también */
-            height: auto;
-            width: auto;
-            object-fit: contain;
-            margin: 0 auto;
-            flex-shrink: 0;
-        }
-
-
-        .gift-info {
-          list-style: none;
-          padding: 0;
-          color: #444;
-        }
-
-        .gift-info li {
-          margin: 8px 0;
-          font-size: 1.5rem;
         }

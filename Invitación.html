@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Irlam & Paola - Una Celebración de Amor</title>
+
+  <!-- Bootstrap y estilos personalizados -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light">
+  <div id="petal-container"></div>
+
+  <!-- Botón de música -->
+  <button id="musicControl" class="music-control" title="Reproducir / Pausar música">
+    <i class="bi bi-music-note-beamed"></i>
+  </button>
+
+  <!-- Audio -->
+  <audio id="backgroundMusic" muted loop>
+    <source src="Audio/audio2.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Pantalla de bienvenida -->
+  <section id="welcomeScreen" class="welcome-screen">
+    <div class="welcome-title">Irlam & Paola</div>
+    <div class="welcome-message">"Hoy, más que nunca, creemos en el amor verdadero. Acompáñanos en nuestra boda civil y celebra con nosotros."</div>
+    <button id="enterBtn" class="enter-button">Entrar a la invitación</button>
+  </section>
+
+  <!-- Contenido principal -->
+  <div class="container" id="mainContainer">
+    <div class="ornamental-border"></div>
+
+    <div class="header">
+      <div class="couples-names">Irlam <span class="ampersand">&</span> Paola</div>
+      <div class="wedding-text">"Hay historias que merecen un capítulo especial, este es el nuestro"</div>
+    </div>
+
+    <div class="content">
+      <!-- Contador regresivo -->
+      <div class="section countdown-section">
+        <div class="countdown-title">Faltan</div>
+        <div class="countdown-container">
+          <div class="countdown-item">
+            <span id="days" class="countdown-number">--</span>
+            <span class="countdown-label">Días</span>
+          </div>
+          <div class="countdown-item">
+            <span id="hours" class="countdown-number">--</span>
+            <span class="countdown-label">Horas</span>
+          </div>
+          <div class="countdown-item">
+            <span id="minutes" class="countdown-number">--</span>
+            <span class="countdown-label">Minutos</span>
+          </div>
+          <div class="countdown-item">
+            <span id="seconds" class="countdown-number">--</span>
+            <span class="countdown-label">Segundos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fecha y Hora -->
+      <div class="section">
+        <div class="section-title">Fecha & Hora</div>
+        <div class="date-time">
+          <div class="date">6 de Septiembre</div>
+          <div class="time">6:30 PM - Ceremonia</div>
+        </div>
+      </div>
+
+      <!-- Nuestra Historia -->
+      <div class="section" id="nuestra-historia">
+        <div class="section-title">Nuestra Historia</div>
+        <div id="carouselNuestraHistoria" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselNuestraHistoria" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselNuestraHistoria" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselNuestraHistoria" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselNuestraHistoria" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselNuestraHistoria" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselNuestraHistoria" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            <button type="button" data-bs-target="#carouselNuestraHistoria" data-bs-slide-to="6" aria-label="Slide 7"></button>
+            <button type="button" data-bs-target="#carouselNuestraHistoria" data-bs-slide-to="7" aria-label="Slide 8"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="Imagenes/1.jpg" class="d-block w-100" alt="Historia 1" style="object-fit: cover; height: 500px;">
+            </div>
+            <div class="carousel-item">
+              <img src="Imagenes/4.jpeg" class="d-block w-100" alt="Historia 2" style="object-fit: cover; height: 500px;">
+            </div>
+            <div class="carousel-item">
+              <img src="Imagenes/5.jpeg" class="d-block w-100" alt="Historia 3" style="object-fit: cover; height: 500px;">
+            </div>
+            <div class="carousel-item">
+              <img src="Imagenes/3.jpeg" class="d-block w-100" alt="Historia 4" style="object-fit: cover; height: 500px;">
+            </div>
+            <div class="carousel-item">
+              <img src="Imagenes/3.jpg" class="d-block w-100" alt="Historia 5" style="object-fit: cover; height: 500px;">
+            </div>
+            <div class="carousel-item">
+              <img src="Imagenes/6.jpeg" class="d-block w-100" alt="Historia 6" style="object-fit: cover; height: 500px;">
+            </div>
+            <div class="carousel-item">
+              <img src="Imagenes/7.jpg" class="d-block w-100" alt="Historia 7" style="object-fit: cover; height: 500px;">
+            </div>
+            <div class="carousel-item">
+              <img src="Imagenes/8.jpeg" class="d-block w-100" alt="Historia 7" style="object-fit: cover; height: 500px;">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselNuestraHistoria" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselNuestraHistoria" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Regalos -->
+      <div class="section" id="regalos">
+        <div class="section-title">Regalos</div>
+        <div class="location" style="margin-bottom: 30px; color: #7f8c8d; font-size: 1.2em; font-style: italic;">
+          <img src="Imagenes/regalo.png" alt="Regalos" style="width: 30%; height: auto;">
+          <h3>
+            Contar con tu compañia este día es un gran regalo para nosotros, pero si deseas contribuir a nuestra nueva vida juntos, nos ayudaría mucho con una aportación para la construcción de este espacio lleno de amor.
+          </h3>
+          <br>
+          <ul class="list-unstyled mb-0" style="font-size: 1.2em;">
+            <li class="mb-2 bg-transparent"><strong>💖 Cuenta para regalos de boda – Irlam & Paola</strong></li>
+            <li class="bg-transparent"><strong>🏦 Banco:</strong> Acreimex (STP)</li>
+            <li class="bg-transparent"><strong>🔢 CLABE:</strong> 646180216901244541</li>
+            <li class="bg-transparent"><strong>👤 Titular:</strong> Irlam Alberto Tah Calam</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Lugar de Celebración -->
+      <div class="section">
+        <div class="section-title">Lugar de Celebración</div>
+        <div class="location">
+          <div class="venue-name">Quinta Senderos</div>
+          <div class="address">Tizimín, Yucatán</div>
+        </div>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.4535954686708!2d-88.16761939999999!3d21.134339500000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f522b2f70093c65%3A0xf1f712bbfded59f4!2sSENDEROS.%20Local%20de%20fiestas!5e0!3m2!1ses!2smx!4v1753057809542!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a href="https://www.google.com/maps/search/Quinta+Senderos+Tizimín+Yucatán" target="_blank" class="btn btn-location mt-3">
+            📍 Cómo Llegar
+          </a>
+        </div>
+      </div>
+
+      <!-- Confirmación -->
+      <div class="section">
+        <div class="section-title">Confirma tu Presencia</div>
+        <div class="location" style="margin-bottom: 30px; color: #7f8c8d; font-size: 1.2em; font-style: italic;">
+          <h3>
+            Este día es especial para nosotros, y más aún si tú estás presente. Por eso, te pedimos que nos hagas saber antes del 15 de agosto si nos acompañarás en nuestra boda. 
+            ¡Te esperamos con los brazos abiertos!
+          </h3>
+          <div class="buttons">
+            <a href="https://wa.me/529861119414?text=¡Hola! Con gran alegría confirmo mi asistencia a la boda de Irlam y Paola el 6 de septiembre. ¡No me lo perdería! 💒💕" class="btn btn-outline-success" target="_blank">
+              💚 Confirmar Asistencia
+            </a>
+            <a href="https://wa.me/529861119414?text=¡Hola! Lo siento no podré asistir, sin embargo les envio mis mejores deseos. 💒💕" class="btn btn-outline-danger" target="_blank">
+              💔 No confirmar Asistencia
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="hearts">💖 ✨ 💖</div>
+      <div class="footer-text">Con todo nuestro amor</div>
+      <p style="font-size: 1.3em; margin: 10px 0;">Irlam & Paola</p>
+      <div class="footer-details">
+        6 de Septiembre, 2025 • Quinta Senderos • Tizimín, Yucatán
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
