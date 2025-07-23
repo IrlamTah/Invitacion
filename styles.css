@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:ital,wght@0,400;1,400&display=swap');
     
-    * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Crimson Text', serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -19,7 +13,7 @@
 
         .container {
           background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.6)),
-              url('Imagenes/fondo2.jpeg') center/cover no-repeat;
+              url('Imagenes/fondo4.jpg') repeat;
           max-width: 700px;
           width: 100%;
           min-height: 400px; /* Asegura altura visible */
@@ -456,151 +450,6 @@
             margin-top: 20px;
             font-size: 1.1em;
             opacity: 0.9;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            .container {
-                border-radius: 20px;
-                width: 100%;
-            }
-            
-            .couples-names {
-                font-size: 2.2em;
-                line-height: 1.2;
-            }
-            
-            .ampersand {
-                margin: 0 10px;
-                font-size: 0.8em;
-            }
-            
-            .wedding-text {
-                font-size: 1.4em;
-                letter-spacing: 1px;
-            }
-
-            .countdown-container {
-                gap: 10px;
-            }
-
-            .countdown-item {
-                min-width: 70px;
-                padding: 12px;
-            }
-
-            .countdown-number {
-                font-size: 2em;
-            }
-
-            .countdown-label {
-                font-size: 0.8em;
-            }
-            
-            .date {
-                font-size: 2em;
-            }
-            
-            .time {
-                font-size: 1.3em;
-            }
-            
-            .section-title {
-                font-size: 1.6em;
-            }
-            
-            .venue-name {
-                font-size: 1.6em;
-            }
-            
-            .address {
-                font-size: 1.1em;
-            }
-            
-            .buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 280px;
-                font-size: 1.1em;
-                padding: 16px 30px;
-            }
-
-            .content {
-                padding: 25px 20px;
-            }
-
-            .header {
-                padding: 35px 20px;
-            }
-            
-            .date-time {
-                padding: 25px 20px;
-                margin: 20px 0;
-            }
-            
-            .location {
-                padding: 25px 20px;
-            }
-            
-            .map-container {
-                margin: 25px 0;
-            }
-            
-            .map-container iframe {
-                height: 280px;
-            }
-            
-            .section {
-                margin-bottom: 35px;
-            }
-            
-            .ornamental-border {
-                top: 15px;
-                left: 15px;
-                right: 15px;
-                bottom: 15px;
-            }
-            
-            .ornamental-border::before,
-            .ornamental-border::after {
-                font-size: 1.5em;
-                padding: 8px;
-            }
-            
-            .footer {
-                padding: 30px 20px;
-            }
-            
-            .footer-text {
-                font-size: 1.2em;
-            }
-            
-            .footer-details {
-                font-size: 1em;
-                line-height: 1.4;
-            }
-            
-            .hearts {
-                font-size: 1.8em;
-            }
-            
-            .section-title::after {
-                width: 60px;
-            }
-
-            .music-control {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2em;
-            }
         }
 
         @media (max-width: 480px) {
