@@ -839,43 +839,60 @@
         }
 
         // Función para iniciar la música con cualquier interacción
-        function startMusicOnInteraction() {
+        function startMusicOnInteraction(e) {
             if (!musicStarted) {
-                const playPromise = music.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        isPlaying = true;
-                        musicStarted = true;
-                        musicControl.classList.add('playing');
-                        musicControl.classList.remove('muted');
-                        musicIcon.className = 'fas fa-volume-up';
-                        // Remover los event listeners una vez que la música comience
-                        removeInteractionListeners();
-                    }).catch(() => {
-                        // Si falla, mantener los listeners
-                    });
-                }
+                // Prevenir el comportamiento por defecto solo si es necesario
+                music.play().then(() => {
+                    isPlaying = true;
+                    musicStarted = true;
+                    musicControl.classList.add('playing');
+                    musicControl.classList.remove('muted');
+                    musicIcon.className = 'fas fa-volume-up';
+                    // Remover los event listeners una vez que la música comience
+                    removeInteractionListeners();
+                }).catch((error) => {
+                    console.log('Error al reproducir:', error);
+                    // Si falla, mantener los listeners para intentar de nuevo
+                });
+            }
+        }
+
+        // Función especial para touchstart que es más confiable en móviles
+        function startMusicOnTouch(e) {
+            if (!musicStarted) {
+                // En móviles, cargar y reproducir inmediatamente
+                music.load();
+                music.play().then(() => {
+                    isPlaying = true;
+                    musicStarted = true;
+                    musicControl.classList.add('playing');
+                    musicControl.classList.remove('muted');
+                    musicIcon.className = 'fas fa-volume-up';
+                    removeInteractionListeners();
+                }).catch((error) => {
+                    console.log('Error al reproducir en touch:', error);
+                });
             }
         }
 
         // Función para remover los listeners una vez que la música inicie
         function removeInteractionListeners() {
-            window.removeEventListener('scroll', startMusicOnInteraction);
-            window.removeEventListener('mousemove', startMusicOnInteraction);
-            window.removeEventListener('touchstart', startMusicOnInteraction);
-            window.removeEventListener('touchmove', startMusicOnInteraction);
-            document.removeEventListener('click', startMusicOnInteraction);
-            document.body.removeEventListener('touchend', startMusicOnInteraction);
+            document.removeEventListener('touchstart', startMusicOnTouch, true);
+            document.removeEventListener('touchend', startMusicOnInteraction, true);
+            document.removeEventListener('click', startMusicOnInteraction, true);
+            window.removeEventListener('scroll', startMusicOnInteraction, true);
+            document.removeEventListener('mousemove', startMusicOnInteraction, true);
+            document.body.removeEventListener('touchmove', startMusicOnInteraction, true);
         }
 
         // Agregar múltiples listeners para capturar cualquier interacción del usuario
-        // IMPORTANTE: Usar window para scroll y movimientos, document para clicks
+        // IMPORTANTE: Para móviles, touchstart en capture phase es más confiable
+        document.addEventListener('touchstart', startMusicOnTouch, { capture: true, passive: true });
+        document.addEventListener('touchend', startMusicOnInteraction, { capture: true, passive: true });
+        document.addEventListener('click', startMusicOnInteraction, { capture: true });
         window.addEventListener('scroll', startMusicOnInteraction, { passive: true });
-        window.addEventListener('mousemove', startMusicOnInteraction, { passive: true, once: true });
-        window.addEventListener('touchstart', startMusicOnInteraction, { passive: true, once: true });
-        window.addEventListener('touchmove', startMusicOnInteraction, { passive: true, once: true });
-        document.addEventListener('click', startMusicOnInteraction, { once: true });
-        document.body.addEventListener('touchend', startMusicOnInteraction, { passive: true, once: true });
+        document.addEventListener('mousemove', startMusicOnInteraction, { passive: true, once: true });
+        document.body.addEventListener('touchmove', startMusicOnInteraction, { passive: true });
     </script>
 </body>
 </html>
