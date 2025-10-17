@@ -436,9 +436,95 @@
             border-color: rgba(255, 105, 180, 0.9);
             transform: scale(1.02);
         }
+
+        /* Control de música flotante */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #C71585 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 10px 40px rgba(255, 20, 147, 0.8), 0 0 30px rgba(255, 105, 180, 0.6);
+            transition: all 0.4s ease;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            animation: musicPulse 2s ease-in-out infinite;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (min-width: 768px) {
+            .music-control {
+                width: 70px;
+                height: 70px;
+                top: 30px;
+                right: 30px;
+            }
+        }
+
+        @keyframes musicPulse {
+            0%, 100% {
+                box-shadow: 0 10px 40px rgba(255, 20, 147, 0.8), 0 0 30px rgba(255, 105, 180, 0.6);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 15px 50px rgba(255, 20, 147, 1), 0 0 50px rgba(255, 105, 180, 0.9);
+                transform: scale(1.05);
+            }
+        }
+
+        .music-control:hover {
+            transform: scale(1.15);
+            box-shadow: 0 20px 60px rgba(255, 20, 147, 1), 0 0 70px rgba(255, 105, 180, 1);
+            background: linear-gradient(135deg, #FFB6FF 0%, #FF69B4 50%, #FF1493 100%);
+        }
+
+        .music-control i {
+            font-size: 2em;
+            color: white;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+        }
+
+        .music-control.playing i {
+            animation: musicBounce 0.6s ease-in-out infinite;
+        }
+
+        @keyframes musicBounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .music-control.muted {
+            background: linear-gradient(135deg, #666 0%, #999 50%, #666 100%);
+            box-shadow: 0 10px 30px rgba(100, 100, 100, 0.5);
+        }
+
+        .music-control.muted:hover {
+            background: linear-gradient(135deg, #888 0%, #aaa 50%, #888 100%);
+        }
     </style>
 </head>
 <body>
+    <!-- Control de música -->
+    <div class="music-control" id="musicControl" onclick="toggleMusic()">
+        <i class="fas fa-music" id="musicIcon"></i>
+    </div>
+
+    <!-- Audio de fondo -->
+    <audio id="backgroundMusic" loop autoplay preload="auto">
+        <source src="Halo.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
     <!-- Mariposas flotantes -->
     <div class="butterfly-container" id="butterflies"></div>
 
@@ -694,6 +780,89 @@
                 butterfly.style.transform = `translateY(${scrolled * speed}px)`;
             });
         });
+
+        // Control de música
+        const music = document.getElementById('backgroundMusic');
+        const musicControl = document.getElementById('musicControl');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        // Configurar volumen inmediatamente
+        music.volume = 0.3;
+
+        // Intentar reproducir música automáticamente apenas se cargue
+        function tryPlayMusic() {
+            const playPromise = music.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Reproducción automática exitosa
+                    isPlaying = true;
+                    musicControl.classList.add('playing');
+                    musicIcon.className = 'fas fa-volume-up';
+                }).catch(() => {
+                    // Reproducción automática bloqueada por el navegador
+                    isPlaying = false;
+                    musicControl.classList.remove('playing');
+                    musicIcon.className = 'fas fa-music';
+                });
+            }
+        }
+
+        // Intentar reproducir en cuanto el DOM esté listo
+        document.addEventListener('DOMContentLoaded', tryPlayMusic);
+
+        // Intentar de nuevo cuando la ventana se cargue completamente
+        window.addEventListener('load', tryPlayMusic);
+
+        // Función para alternar música
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                isPlaying = false;
+                musicControl.classList.remove('playing');
+                musicControl.classList.add('muted');
+                musicIcon.className = 'fas fa-volume-mute';
+            } else {
+                music.play();
+                isPlaying = true;
+                musicControl.classList.add('playing');
+                musicControl.classList.remove('muted');
+                musicIcon.className = 'fas fa-volume-up';
+            }
+        }
+
+        // Función para iniciar la música con cualquier interacción
+        function startMusicOnInteraction() {
+            if (!isPlaying) {
+                const playPromise = music.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        isPlaying = true;
+                        musicControl.classList.add('playing');
+                        musicIcon.className = 'fas fa-volume-up';
+                        // Remover los event listeners una vez que la música comience
+                        removeInteractionListeners();
+                    }).catch(() => {
+                        // Si falla, mantener los listeners
+                    });
+                }
+            }
+        }
+
+        // Función para remover los listeners una vez que la música inicie
+        function removeInteractionListeners() {
+            document.removeEventListener('scroll', startMusicOnInteraction);
+            document.removeEventListener('mousemove', startMusicOnInteraction);
+            document.removeEventListener('touchstart', startMusicOnInteraction);
+            document.removeEventListener('click', startMusicOnInteraction);
+        }
+
+        // Agregar múltiples listeners para capturar cualquier interacción del usuario
+        document.addEventListener('scroll', startMusicOnInteraction, { passive: true });
+        document.addEventListener('mousemove', startMusicOnInteraction, { once: true });
+        document.addEventListener('touchstart', startMusicOnInteraction, { once: true });
+        document.addEventListener('click', startMusicOnInteraction, { once: true });
     </script>
 </body>
 </html>
