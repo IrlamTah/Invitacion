@@ -786,6 +786,7 @@
         const musicControl = document.getElementById('musicControl');
         const musicIcon = document.getElementById('musicIcon');
         let isPlaying = false;
+        let musicStarted = false; // Bandera para saber si ya se activó la música
 
         // Configurar volumen inmediatamente
         music.volume = 0.3;
@@ -798,8 +799,11 @@
                 playPromise.then(() => {
                     // Reproducción automática exitosa
                     isPlaying = true;
+                    musicStarted = true;
                     musicControl.classList.add('playing');
+                    musicControl.classList.remove('muted');
                     musicIcon.className = 'fas fa-volume-up';
+                    removeInteractionListeners();
                 }).catch(() => {
                     // Reproducción automática bloqueada por el navegador
                     isPlaying = false;
@@ -826,20 +830,24 @@
             } else {
                 music.play();
                 isPlaying = true;
+                musicStarted = true;
                 musicControl.classList.add('playing');
                 musicControl.classList.remove('muted');
                 musicIcon.className = 'fas fa-volume-up';
+                removeInteractionListeners();
             }
         }
 
         // Función para iniciar la música con cualquier interacción
         function startMusicOnInteraction() {
-            if (!isPlaying) {
+            if (!musicStarted) {
                 const playPromise = music.play();
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
                         isPlaying = true;
+                        musicStarted = true;
                         musicControl.classList.add('playing');
+                        musicControl.classList.remove('muted');
                         musicIcon.className = 'fas fa-volume-up';
                         // Remover los event listeners una vez que la música comience
                         removeInteractionListeners();
@@ -852,17 +860,22 @@
 
         // Función para remover los listeners una vez que la música inicie
         function removeInteractionListeners() {
-            document.removeEventListener('scroll', startMusicOnInteraction);
-            document.removeEventListener('mousemove', startMusicOnInteraction);
-            document.removeEventListener('touchstart', startMusicOnInteraction);
+            window.removeEventListener('scroll', startMusicOnInteraction);
+            window.removeEventListener('mousemove', startMusicOnInteraction);
+            window.removeEventListener('touchstart', startMusicOnInteraction);
+            window.removeEventListener('touchmove', startMusicOnInteraction);
             document.removeEventListener('click', startMusicOnInteraction);
+            document.body.removeEventListener('touchend', startMusicOnInteraction);
         }
 
         // Agregar múltiples listeners para capturar cualquier interacción del usuario
-        document.addEventListener('scroll', startMusicOnInteraction, { passive: true });
-        document.addEventListener('mousemove', startMusicOnInteraction, { once: true });
-        document.addEventListener('touchstart', startMusicOnInteraction, { once: true });
+        // IMPORTANTE: Usar window para scroll y movimientos, document para clicks
+        window.addEventListener('scroll', startMusicOnInteraction, { passive: true });
+        window.addEventListener('mousemove', startMusicOnInteraction, { passive: true, once: true });
+        window.addEventListener('touchstart', startMusicOnInteraction, { passive: true, once: true });
+        window.addEventListener('touchmove', startMusicOnInteraction, { passive: true, once: true });
         document.addEventListener('click', startMusicOnInteraction, { once: true });
+        document.body.addEventListener('touchend', startMusicOnInteraction, { passive: true, once: true });
     </script>
 </body>
 </html>
