@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Diana</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #8B008B 0%, #FF1493 100%);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Mariposas flotantes */
+        .butterfly-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .butterfly {
+            position: absolute;
+            font-size: 2.5em;
+            opacity: 0;
+            animation: flyButterfly 20s infinite ease-in-out;
+            filter: drop-shadow(0 0 15px rgba(255, 105, 180, 1)) drop-shadow(0 0 25px rgba(255, 20, 147, 0.8));
+        }
+
+        @keyframes flyButterfly {
+            0% {
+                transform: translate(-100px, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.9;
+            }
+            90% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translate(100vw, -100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Partículas brillantes */
+        .sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff1493;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+            box-shadow: 0 0 15px #ff1493, 0 0 30px #ff69b4;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Contenedor principal */
+        .invitation-wrapper {
+            position: relative;
+            z-index: 3;
+            padding: 40px 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 60px 20px 40px;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mis-quince {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2em, 5vw, 3.5em);
+            color: #FFE4FF;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+        }
+
+        .big-number {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(6em, 15vw, 50em);
+            color: #FFFFFF;
+            line-height: 0.8;
+            text-shadow: 0 0 40px rgba(255, 20, 147, 1), 0 0 80px rgba(255, 105, 180, 1), 0 0 120px rgba(255, 182, 255, 0.6);
+            animation: glow 2s ease-in-out infinite alternate;
+            margin: 20px 0;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 30px rgba(255, 20, 147, 0.8), 0 0 60px rgba(255, 105, 180, 0.8), 0 0 90px rgba(255, 182, 255, 0.5);
+            }
+            to {
+                text-shadow: 0 0 50px rgba(255, 20, 147, 1), 0 0 100px rgba(255, 105, 180, 1), 0 0 150px rgba(255, 182, 255, 0.8);
+            }
+        }
+
+        .anos-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5em, 6vw, 6em);
+            color: #FFE4FF;
+            margin-left: 20px;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+        }
+
+        .name-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3em, 8vw, 6em);
+            color: #FFFFFF;
+            margin: 30px 0;
+            text-shadow: 0 0 25px rgba(255, 105, 180, 0.9), 0 0 45px rgba(255, 20, 147, 0.6);
+            animation: fadeIn 2s ease 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #FFE4FF;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeIn 2s ease 1s both;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+
+        .custom-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #FFE4FF;
+            font-style: italic;
+            font-weight: 400;
+            text-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
+        }
+        .title-parents {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            font-weight: 400;
+            color: #FFFFFF;
+            text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+        }
+
+        /* Flores decorativas */
+        .floral-decoration {
+            font-size: clamp(3em, 8vw, 6em);
+            margin: 20px 0;
+            animation: sway 4s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* Quinceañera illustration */
+        .dress-container {
+            position: relative;
+            margin: 50px auto;
+            animation: fadeInUp 2s ease both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dress-icon {
+            font-size: clamp(8em, 20vw, 15em);
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 10px 30px rgba(17, 17, 17, 0.7)) drop-shadow(0 0 40px rgba(3, 3, 3, 0.5));
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Info Cards */
+        .info-card {
+            background: rgba(139, 0, 139, 0.25);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 105, 180, 0.5);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(255, 20, 147, 0.2);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 105, 180, 0.9);
+            box-shadow: 0 15px 50px rgba(255, 20, 147, 0.6), 0 0 60px rgba(255, 105, 180, 0.4);
+            background: rgba(199, 21, 133, 0.35);
+        }
+
+        .card-icon {
+            font-size: 3.5em;
+            animation: bounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.8));
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Countdown */
+        .countdown-box {
+            background: rgba(139, 0, 139, 0.3);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 105, 180, 0.6);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.3);
+        }
+
+        .countdown-box:hover {
+            background: rgba(199, 21, 133, 0.4);
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(255, 20, 147, 0.5);
+            border-color: rgba(255, 105, 180, 0.9);
+        }
+
+        .countdown-number {
+            font-size: clamp(2.5em, 6vw, 4em);
+            font-weight: bold;
+            color: #FFFFFF;
+            text-shadow: 0 0 25px rgba(255, 20, 147, 1), 0 0 45px rgba(255, 105, 180, 0.8);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .countdown-label {
+            font-size: clamp(0.8em, 2vw, 1em);
+            color: #FFE4FF;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+        }
+
+        /* Confirm Button */
+        .confirm-btn {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #C71585 100%);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: clamp(1.1em, 3vw, 1.4em);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 20px 60px;
+            box-shadow: 0 10px 40px rgba(255, 20, 147, 0.7), 0 0 30px rgba(255, 105, 180, 0.5);
+            transition: all 0.3s ease;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 40px rgba(255, 20, 147, 0.7), 0 0 30px rgba(255, 105, 180, 0.5);
+            }
+            50% {
+                box-shadow: 0 15px 60px rgba(255, 20, 147, 1), 0 0 50px rgba(255, 105, 180, 0.8);
+            }
+        }
+
+        .confirm-btn:hover {
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255, 20, 147, 1), 0 0 70px rgba(255, 105, 180, 1);
+            background: linear-gradient(135deg, #FFB6FF 0%, #FF69B4 50%, #FF1493 100%);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Divider */
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FF69B4, #FF1493, #FF69B4, transparent);
+            animation: shimmer 3s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Special Message */
+        .special-message {
+            background: linear-gradient(135deg, rgba(139, 0, 139, 0.35) 0%, rgba(199, 21, 133, 0.35) 100%);
+            border: 2px solid rgba(255, 105, 180, 0.6);
+            backdrop-filter: blur(20px);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1em, 3vw, 1.5em);
+            color: #FFE4FF;
+            font-style: italic;
+            line-height: 1.8;
+            box-shadow: 0 10px 40px rgba(255, 20, 147, 0.3);
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+        }
+
+        /* Botón de ubicación */
+        .btn-location {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #C71585 100%);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: clamp(1em, 2.5vw, 1.3em);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 18px 45px;
+            border-radius: 50px;
+            box-shadow: 0 10px 35px rgba(255, 20, 147, 0.6), 0 0 25px rgba(255, 105, 180, 0.4);
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-location::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+        }
+
+        .btn-location:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn-location:hover {
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 20px 50px rgba(255, 20, 147, 0.9), 0 0 60px rgba(255, 105, 180, 0.7);
+            background: linear-gradient(135deg, #FFB6FF 0%, #FF69B4 50%, #FF1493 100%);
+            color: white;
+            text-decoration: none;
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .btn-location:active {
+            transform: scale(1.02) translateY(-2px);
+        }
+
+        /* Estilo para el mapa */
+        .info-card iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4), 0 0 20px rgba(255, 105, 180, 0.3);
+            border: 3px solid rgba(255, 105, 180, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .info-card iframe:hover {
+            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.6), 0 0 40px rgba(255, 105, 180, 0.5);
+            border-color: rgba(255, 105, 180, 0.9);
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <!-- Mariposas flotantes -->
+    <div class="butterfly-container" id="butterflies"></div>
+
+    <!-- Partículas brillantes -->
+    <div class="sparkles" id="sparkles"></div>
+
+    <!-- Contenido principal -->
+    <div class="invitation-wrapper">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="mis-quince">Mis</div>
+                <div class="d-flex justify-content-center align-items-center flex-wrap">
+                    <div class="big-number">15</div>
+                    <div class="anos-text">años</div>
+                </div>
+                <div class="floral-decoration">🌸✨🦋✨🌸</div>
+                <div class="name-title">Diana Aracely Calam Conrado</div>
+                <div class="subtitle">
+                    Acompáñame a celebrar este momento tan importante en mi vida
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="divider my-5"></div>
+             <!-- Código de vestimenta -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <div class="info-card rounded-4 p-5 text-center">
+                        <p class="custom-quote">
+                            Doy gracias a Dios y a mis padres por concederme la vida. Hay recuerdos que no voy a borrar, personas que no voy a olvidar y momentos como este, que siempre voy a guardar,
+                            por que seran parte de mi vida.
+                        </p>
+                        <br>
+                        <h3 class="h4 mb-4 fw-bold title-parents">Mis padres</h3>
+                        <p class="custom-quote">
+                            Sr. Carlos Calam & Sra. Teresa Conrado
+                        </p>
+                        <br>
+                        <p class="custom-quote">
+                            Tenemos el honor de invitarlos a celebrar los XV de nuestra querida hija.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cuenta regresiva -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-12 text-center mb-4">
+                    <h2 class="display-5 text-light mb-4" style="font-family: 'Playfair Display', serif; text-shadow: 0 0 20px rgba(255, 105, 180, 0.6);">
+                        <i class="fas fa-clock me-3" style="color: #FFB6FF; filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8));"></i>
+                        Faltan
+                    </h2>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row g-3" id="countdown">
+                        <div class="col-6 col-md-3">
+                            <div class="countdown-box rounded-4 p-4 text-center">
+                                <div class="countdown-number" id="days">00</div>
+                                <div class="countdown-label">Días</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="countdown-box rounded-4 p-4 text-center">
+                                <div class="countdown-number" id="hours">00</div>
+                                <div class="countdown-label">Horas</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="countdown-box rounded-4 p-4 text-center">
+                                <div class="countdown-number" id="minutes">00</div>
+                                <div class="countdown-label">Minutos</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="countdown-box rounded-4 p-4 text-center">
+                                <div class="countdown-number" id="seconds">00</div>
+                                <div class="countdown-label">Segundos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="divider my-5"></div>
+            <div class="dress-container text-center my-5">
+                <img src="2.png" alt="Vestido" class="dress-icon" style="max-width: 200px; height: auto;">
+            </div>
+            <!-- Fecha y Lugar -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-6">
+                    <div class="info-card rounded-4 p-5 h-100 text-center">
+                        <div class="card-icon mb-3" style="color: #FFB6FF;">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="h4 mb-4 fw-bold" style="color: #FFFFFF; font-family: 'Playfair Display', serif; text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);">Fecha y Hora</h3>
+                        <p class="fs-5 mb-2" style="color: #FFE4FF; text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);">
+                            <i class="fas fa-calendar-day me-2"></i>
+                            02 / NOV / 25
+                        </p>
+                        <p class="fs-5" style="color: #FFE4FF; text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);">
+                            <i class="fas fa-clock me-2"></i>
+                            9:00 p.m.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="info-card rounded-4 p-5 h-100 text-center">
+                        <div class="card-icon mb-3" style="color: #FFB6FF;">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="h4 mb-4 fw-bold" style="color: #FFFFFF; font-family: 'Playfair Display', serif; text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);">Lugar</h3>
+                        <p class="fs-5" style="color: #FFE4FF; text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);">
+                            <i class="fas fa-building me-2"></i>
+                            Quinta Senderos
+                        </p>
+                        <p class="fs-6" style="color: #FFE4FF; text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);">
+                            Tizimín, Yucatán<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <div class="info-card rounded-4 p-5 text-center">
+                        
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.4535954686708!2d-88.16761939999999!3d21.134339500000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f522b2f70093c65%3A0xf1f712bbfded59f4!2sSENDEROS.%20Local%20de%20fiestas!5e0!3m2!1ses!2smx!4v1753057809542!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <a href="https://www.google.com/maps/search/Quinta+Senderos+Tizimín+Yucatán" target="_blank" class="btn btn-location mt-3">
+                         📍 Cómo Llegar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dress illustration -->
+            <div class="dress-container text-center my-5">
+                <img src="1.png" alt="Vestido" class="dress-icon" style="max-width: 200px; height: auto;">
+            </div>
+
+            <!-- Divider -->
+            <div class="divider my-5"></div>
+
+            <!-- Mensaje especial -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="special-message rounded-4 p-5 text-center">
+                        <p class="custom-quote">
+                            ✨ Tu presencia es el mejor regalo que puedo recibir ✨
+                        </p>
+                        <p class="custom-quote">
+                            "Quince años de sueños, quince años de ilusiones,<br>
+                            hoy celebro la vida rodeada de quienes amo"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirmación -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <div class="info-card rounded-4 p-5 text-center">
+                        <div class="card-icon mb-3" style="color: #FFB6FF;">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3 class="h4 mb-4 fw-bold" style="color: #FFFFFF; font-family: 'Playfair Display', serif; text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);">Confirma tu asistencia</h3>
+                        <p class="fs-5 mb-4" style="color: #FFE4FF; text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);">
+                            <i class="fab fa-whatsapp me-2 fs-3"></i>
+                            9861031519
+                        </p>
+                        <button class="btn confirm-btn rounded-pill" onclick="confirmarAsistencia()">
+                            <i class="fas fa-check-circle me-2"></i>
+                            Confirmar Asistencia
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center my-5 py-5">
+                <p class="fs-1" style="color: #FFE4FF; font-family: 'Great Vibes', cursive; text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);">
+                    🦋 Gracias por ser parte de mi historia 🦋
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Crear mariposas flotantes
+        const butterfliesContainer = document.getElementById('butterflies');
+        for (let i = 0; i < 15; i++) {
+            const butterfly = document.createElement('div');
+            butterfly.className = 'butterfly';
+            butterfly.textContent = '🦋';
+            butterfly.style.left = Math.random() * 100 + '%';
+            butterfly.style.animationDelay = Math.random() * 20 + 's';
+            butterfly.style.animationDuration = (Math.random() * 15 + 15) + 's';
+            butterfliesContainer.appendChild(butterfly);
+        }
+
+        // Crear partículas brillantes
+        const sparklesContainer = document.getElementById('sparkles');
+        for (let i = 0; i < 60; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            sparklesContainer.appendChild(sparkle);
+        }
+
+        // Cuenta regresiva
+        function updateCountdown() {
+            const eventDate = new Date('2025-11-02T21:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div class="col-12"><div class="countdown-box rounded-4 p-5 text-center"><div style="font-size: 3em; color: #FFFFFF; text-shadow: 0 0 30px rgba(255, 20, 147, 1);">¡Es hoy! 🎉</div></div></div>';
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Función de confirmación
+        function confirmarAsistencia() {
+            const mensaje = '¡Hola! Quiero confirmar mi asistencia a los XV años de Diana';
+            const telefono = '9861031519';
+            const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        // Efecto parallax suave
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const butterflies = document.querySelectorAll('.butterfly');
+            butterflies.forEach((butterfly, index) => {
+                const speed = (index % 3 + 1) * 0.15;
+                butterfly.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
