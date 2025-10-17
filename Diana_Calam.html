@@ -693,14 +693,29 @@
                             <i class="fas fa-phone-alt"></i>
                         </div>
                         <h3 class="h4 mb-4 fw-bold" style="color: #FFFFFF; font-family: 'Playfair Display', serif; text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);">Confirma tu asistencia</h3>
-                        <p class="fs-5 mb-4" style="color: #FFE4FF; text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);">
-                            <i class="fab fa-whatsapp me-2 fs-3"></i>
-                            9861031519
-                        </p>
-                        <button class="btn confirm-btn rounded-pill" onclick="confirmarAsistencia()">
-                            <i class="fas fa-check-circle me-2"></i>
-                            Confirmar Asistencia
-                        </button>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <p class="fs-5 mb-3" style="color: #FFE4FF; text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);">
+                                    <i class="fab fa-whatsapp me-2 fs-3"></i>
+                                    Carlos: 9861001535
+                                </p>
+                                <button class="btn confirm-btn rounded-pill" onclick="confirmarAsistenciaCarlos()">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    Confirmar con Carlos
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="fs-5 mb-3" style="color: #FFE4FF; text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);">
+                                    <i class="fab fa-whatsapp me-2 fs-3"></i>
+                                    Teresa: 9861031519
+                                </p>
+                                <button class="btn confirm-btn rounded-pill" onclick="confirmarAsistenciaTere()">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    Confirmar con Teresa
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -763,8 +778,16 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Función de confirmación
-        function confirmarAsistencia() {
+        // Función de confirmación - Carlos
+        function confirmarAsistenciaCarlos() {
+            const mensaje = '¡Hola! Quiero confirmar mi asistencia a los XV años de Diana';
+            const telefono = '9861001535';
+            const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        // Función de confirmación - Tere
+        function confirmarAsistenciaTere() {
             const mensaje = '¡Hola! Quiero confirmar mi asistencia a los XV años de Diana';
             const telefono = '9861031519';
             const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
