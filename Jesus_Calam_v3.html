@@ -833,16 +833,7 @@
                                 </div>
                             </div>
 
-                            <!-- Madrina individual -->
-                            <div class="col-md-6">
-                                <div class="p-3 d-flex justify-content-center">
-                                    <div style="text-align: left;">
-                                        <p class="custom-quote" style="font-size: 1.1rem;">
-                                            <i class="fas fa-user" style="color: #ff4500; margin-right: 8px;"></i>María Calam
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -986,7 +977,7 @@
             });
         });
 
-        // Control de música
+        // Control de música optimizado para móviles
         const music = document.getElementById('backgroundMusic');
         const musicControl = document.getElementById('musicControl');
         const musicIcon = document.getElementById('musicIcon');
@@ -994,28 +985,6 @@
         let musicStarted = false;
 
         music.volume = 0.3;
-
-        function tryPlayMusic() {
-            const playPromise = music.play();
-
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    isPlaying = true;
-                    musicStarted = true;
-                    musicControl.classList.add('playing');
-                    musicControl.classList.remove('muted');
-                    musicIcon.className = 'fas fa-volume-up';
-                    removeInteractionListeners();
-                }).catch(() => {
-                    isPlaying = false;
-                    musicControl.classList.remove('playing');
-                    musicIcon.className = 'fas fa-music';
-                });
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', tryPlayMusic);
-        window.addEventListener('load', tryPlayMusic);
 
         function toggleMusic() {
             if (isPlaying) {
@@ -1025,17 +994,17 @@
                 musicControl.classList.add('muted');
                 musicIcon.className = 'fas fa-volume-mute';
             } else {
-                music.play();
+                music.play().catch(() => {});
                 isPlaying = true;
                 musicStarted = true;
                 musicControl.classList.add('playing');
                 musicControl.classList.remove('muted');
                 musicIcon.className = 'fas fa-volume-up';
-                removeInteractionListeners();
             }
         }
 
-        function startMusicOnInteraction(e) {
+        // Iniciar música en la primera interacción del usuario
+        function startMusic() {
             if (!musicStarted) {
                 music.play().then(() => {
                     isPlaying = true;
@@ -1043,44 +1012,19 @@
                     musicControl.classList.add('playing');
                     musicControl.classList.remove('muted');
                     musicIcon.className = 'fas fa-volume-up';
-                    removeInteractionListeners();
-                }).catch((error) => {
-                    console.log('Error al reproducir:', error);
-                });
+                }).catch(() => {});
+
+                // Remover listeners después del primer intento
+                document.removeEventListener('touchstart', startMusic);
+                document.removeEventListener('scroll', startMusic);
+                document.removeEventListener('click', startMusic);
             }
         }
 
-        function startMusicOnTouch(e) {
-            if (!musicStarted) {
-                music.load();
-                music.play().then(() => {
-                    isPlaying = true;
-                    musicStarted = true;
-                    musicControl.classList.add('playing');
-                    musicControl.classList.remove('muted');
-                    musicIcon.className = 'fas fa-volume-up';
-                    removeInteractionListeners();
-                }).catch((error) => {
-                    console.log('Error al reproducir en touch:', error);
-                });
-            }
-        }
-
-        function removeInteractionListeners() {
-            document.removeEventListener('touchstart', startMusicOnTouch, true);
-            document.removeEventListener('touchend', startMusicOnInteraction, true);
-            document.removeEventListener('click', startMusicOnInteraction, true);
-            window.removeEventListener('scroll', startMusicOnInteraction, true);
-            document.removeEventListener('mousemove', startMusicOnInteraction, true);
-            document.body.removeEventListener('touchmove', startMusicOnInteraction, true);
-        }
-
-        document.addEventListener('touchstart', startMusicOnTouch, { capture: true, passive: true });
-        document.addEventListener('touchend', startMusicOnInteraction, { capture: true, passive: true });
-        document.addEventListener('click', startMusicOnInteraction, { capture: true });
-        window.addEventListener('scroll', startMusicOnInteraction, { passive: true });
-        document.addEventListener('mousemove', startMusicOnInteraction, { passive: true, once: true });
-        document.body.addEventListener('touchmove', startMusicOnInteraction, { passive: true });
+        // Listeners simples para móviles - solo 3 eventos necesarios
+        document.addEventListener('touchstart', startMusic, { passive: true, once: true });
+        document.addEventListener('scroll', startMusic, { passive: true, once: true });
+        document.addEventListener('click', startMusic, { passive: true, once: true });
     </script>
 </body>
 </html>
